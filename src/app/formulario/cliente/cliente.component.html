@@ -1,0 +1,22 @@
+
+<ag-grid-angular
+   
+    style="width:100%; height: 460px; "
+    class="ag-theme-alpine"
+    [rowData]="cliente"
+    [columnDefs]="columnDefs"
+    [enableSorting] = "true"
+    [animateRows] ="true"
+   [pagination] ="true"
+   [paginationPageSize]="10"
+   [enableFilter]="true"
+   [floatingFilter]="true"
+   rowSelection=  "multiple"
+   (gridReady)="onGridReady($event)"  
+    >
+    
+</ag-grid-angular>
+
+<button class ="btn btn-danger mr2" (click)="onDeleteRow()">Eliminar Filas Seleccionadas</button>
+
+<button class ="btn btn-primary mr2" (click)="onAddRow()">Agregar Nuevo</button>

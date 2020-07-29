@@ -1,0 +1,27 @@
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+
+.ag-theme-alpine {
+    @include ag-theme-alpine();
+}
+table.table-hover tbody tr:hover{
+    cursor: pointer;
+   
+}
+
+/*  Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap'; 
+
+button.btn-submit{
+    background-color: #38547b;
+    color: #fff;
+    width: 100%;
+}
+button.btn-submit:focus,button.btn-submit:hover{
+    background-color: #38547b;
+}
+
+ /* input.ng-invalid.ng-dirty{
+    border-bottom-color : #e91e63 !important;
+   
+}  */

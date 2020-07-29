@@ -1,0 +1,72 @@
+<div class="container">  
+    <div class="row">  
+        <div class="col-md-8">  
+            <h1>  
+                <span class="badge badge-dark" id="header">Registro de Usuario</span>  
+            </h1>  
+            <hr>  
+                <form  [formGroup]="service.formModel" autocomplete="off"  (submit) ="onSubmit()"  >  
+                    <div class="row">  
+                        <div class="col-md-4"  class="form-group ">   
+                            <label >Nombre:</label>  
+                        </div>  
+                        <div class="col-md-6">  
+                            <input  type="text" class="form-control"  name="Nombre" formControlName="Nombre"  >     
+                        </div>  
+                    </div>  
+                       
+                    <div class="row">  
+                        <div class="col-md-4"  class="form-group">   
+                            <label >Email:</label>  
+                        </div>  
+                        <div class="col-md-6">  
+                            <input  type="text" class="form-control"  name="Email" formControlName="Email"  >   
+                            <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Invalido email </label>     
+                        </div>  
+                    </div>  
+                            
+                     <div class="row">  
+                         <div class="col-md-4">
+                        <div  class="form-group required">  
+                            <label>Usuario:</label>  
+                        </div> 
+                    </div> 
+                        <div class="col-md-6">  
+                             <input type="text" class="form-control" formControlName="UserName">  
+                             <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">Este campo es obligatorio.</label>              
+                        </div>  
+                    </div>
+
+                <div  formGroupName="Passwords">  
+                    <div  class="row" >
+                        <div class="col-md-4" class="form-group required">  
+                             <label >Password:</label>  
+                        </div>  
+                        <div class="col-md-6">  
+                              <input type="password" class="form-control" formControlName="Password">   
+                              <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">Este campo es obligatorio.</label>
+                              <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength">Minimo 4 characters requerido.</label>      
+                        </div> 
+                    </div>
+
+                    <div class ="row">
+                            <div class="col-md-4" class="form-group required">  
+                                <label >Confirmar :</label>  
+                            </div>  
+                            <div class="col-md-6">  
+                                <input type="password" class="form-control" formControlName="ConfirmPassword">  
+                                <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">Este campo es obligatorio.</label>
+                                <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Password invalido.</label>
+                                         
+                            </div>  
+                    </div>
+                </div>  
+                      <div class="row">  
+                            <div class="col-md-4">  
+                                 <button type="submit" class="btn btn-primary" [disabled] ="!service.formModel.valid" >Enviar</button>
+                             </div> 
+                      </div>   
+                 </form>  
+         </div>  
+    </div>  
+</div>  

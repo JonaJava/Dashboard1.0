@@ -1,0 +1,85 @@
+<form  #form="ngForm" autocomplete="off" *ngIf="orderservice.formData" (submit)="onSubmit(form)">
+    <input type="hidden"  name="OrderID" #OrderID="ngModel" [(ngModel)]="orderservice.formData.OrderID">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <mat-label>NUMERO DE PEDIDO</mat-label>
+                           <nz-input-group nzAddOnBefore="#">
+                            <input nz-input name="OrderNo" #OrderNo="ngModel" [(ngModel)]="orderservice.formData.OrderNo" class="form-control"  readonly   >
+                            </nz-input-group>   
+                   
+            </div>
+            
+                <div class="form-group"  >  
+                 
+                    <mat-label>CLIENTE</mat-label>
+                    <mat-select  name="ClienteID" #ClienteID="ngModel" [(ngModel)]="orderservice.formData.ClienteID" class="form-control" [class.is-invalid]="!isValid && orderservice.formData.ClienteID==0" >
+                      <mat-option  *ngFor="let item of listaCliente" value="{{item.ClienteID}}"    >{{item.Nombre}}</mat-option>
+                    </mat-select >   
+                                
+                </div>   
+           
+         </div>       
+        <div class="col-md-6">
+            <div class="form-group">
+                <mat-label>METODO DE PAGO</mat-label>
+                    <mat-select    name="PMethod" #PMethod="ngModel" [(ngModel)]="orderservice.formData.PMethod" class="form-control"   >
+                       
+                        <mat-option value="EFECTIVO"> EFECTIVO</mat-option>
+                        <mat-option value="TARJETA">TARJETA</mat-option>
+                    </mat-select>
+            </div>
+        
+            <div class="form-group" >
+                <mat-label>TOTAL</mat-label>          
+                        <nz-input-group nzAddOnBefore="$">
+                      <input nz-input name="GTotal" #GTotal="ngModel" [(ngModel)]="orderservice.formData.GTotal" class="form-control" readonly >
+                      </nz-input-group>         
+            </div>
+        </div>
+    
+    </div>
+
+<!-- order items table-->
+
+ <table class="table table-dark table-striped table-bordered"  > 
+    <thead  class="thead-dark">
+      
+      <th>Item</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Total</th>
+      <th> <a class="btn btn-sm btn-success text-white" (click)="AddOrEditOrderItem(orderservice.formData.OrderID,null)"><i nz-icon nzType="plus-circle" nzTheme="fill"></i> Agregar Item </a>
+
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngIf="orderservice.orderItems.length==0"   [class.text-danger]="!isValid && orderservice.orderItems.length==0"  >
+        <td class="font-italic text-center"  colspan="5">
+          nada seleccionado
+        </td>
+      </tr>
+   
+      <tr *ngFor="let item of orderservice.orderItems | paginate: {itemsPerPage: 3, currentPage: pageActual};let i=index;"    >
+   
+        <td >{{item.ItemNombre}}</td>
+        <td>{{item.Precio}}</td>
+        <td>{{item.Cantidad}}</td>
+        <td>{{item.Total}}</td>
+       <td>
+          <a class="btn btn-sm btn-info text-white" (click)="AddOrEditOrderItem(orderservice.formData.OrderID,i)" ><i nz-icon [nzType]="'sync'" [nzSpin]="true"></i></a>
+          <a class="btn btn-sm btn-danger text-white ml-1"  (click)="DeleteOrderItem(item.OrderItemID,i)"  ><i nz-icon nzType="delete" nzTheme="outline"></i></a>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table> 
+  <div class="color" >
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-dark"><i class="fa fa-database"></i>Enviar</button>
+    <a class="btn btn-outline-dark ml-1" [routerLink]="['/orderes']"><i class="fa fa-table"></i> Ver pedidos</a>
+  </div>
+   
+</form>

@@ -1,0 +1,99 @@
+
+    <div class="container">  
+        <div class="row">  
+            <div class="col-md-8">  
+                <h1>  
+                    <span class="badge badge-dark" id="header">Registro de Cliente</span>  
+                </h1>  
+                <hr>  
+                    <form  [formGroup]="formGroup"  >  
+                        <div class="row">  
+                            <div class="col-md-4">
+                            <div  class="form-group required">  
+                                <label  >Nombre:</label>  
+                            </div>  
+                        </div>
+                            <div class="col-md-6">  
+                                <input  type="text" class="form-control"  name="Nombre" formControlName="Nombre"  >  
+                                    <!-- <div *ngIf="submitted && formGroup.controls.Nombre.errors" class="error">  
+                                        <div *ngIf="formGroup.controls.Nombre.errors.required">nombre requerido</div>  
+                                    </div>   -->
+                                    <div class="alert-danger" *ngIf="formGroup.controls.Nombre.invalid &&
+                                     (formGroup.controls.Nombre.dirty || formGroup.controls.Nombre.touched)">
+                                        <div class="container-error-message" *ngIf="formGroup.controls.Nombre.errors.required">
+                                          Nombre es requerido
+                                        </div>
+                                        <div class="container-error-message" *ngIf="formGroup.controls.Nombre.errors.minlength">
+                                          Nombre debe contener al menos 3 caracteres.
+                                        </div>
+                                      </div>
+                            </div>  
+                        </div>  
+                        
+                            <div class="row">  
+                                <div class="col-md-4">
+                                <div  class="form-group required">  
+                                    <label for="Email" >Email:</label>  
+                                </div>  
+                            </div>
+                                <div class="col-md-6" >  
+                                    <input type="text" class="form-control"  formControlName="Email">  
+                                        <!-- <div *ngIf="submitted && formGroup.controls.Email.errors" class="error">  
+                                            <div *ngIf="formGroup.controls.Email.errors.required">Email es requerido</div>  
+                                        </div>  
+                                      -->
+                                      <div class="alert-danger" *ngIf="formGroup.controls.Email.invalid && (formGroup.controls.Email.dirty || formGroup.controls.Email.touched)">
+                                        <div class="container-error-message" *ngIf="formGroup.controls.Email.errors.required">
+                                          Email es requerido
+                                        </div>
+                                        <div class="container-error-message"
+                                        *ngIf="(formGroup.controls.Email.dirty || formGroup.controls.Email.touched) && formGroup.controls.Email.invalid && formGroup.controls.Email.errors.pattern">
+                                        El email ingresado debe ser valido
+                                      </div>      
+                                      </div>
+                                </div> 
+                            </div>  
+                                
+                                 <div class="row">  
+                                    <div class="col-md-4">  
+                                            <label for="Ciudad">Ciudad:</label>  
+                                        </div>  
+                                        <div class="col-md-6">  
+                                            <input type="text" class="form-control" formControlName="Ciudad">  
+                                                <!-- <div *ngIf="submitted && formGroup.controls.Ciudad.errors" class="error">  
+                                                    <div *ngIf="formGroup.controls.Ciudad.errors.required">ciudad es requerida</div>  
+                                        </div>   -->
+                                         <!-- <div class="alert-danger" *ngIf="formGroup.controls.Ciudad.invalid &&
+                                        (formGroup.controls.Ciudad.dirty || formGroup.controls.Ciudad.touched)">
+                                           <div class="container-error-message" *ngIf="formGroup.controls.Ciudad.errors.required">
+                                            Ciudad es requerido
+                                           </div>
+                                           <div class="container-error-message" *ngIf="formGroup.controls.Ciudad.errors.minlength">
+                                            Ciudad debe contener al menos 3 caracteres.
+                                           </div>
+                                         </div>    -->
+                                    </div>  
+                                </div>  
+                                        <div class="row">  
+                                            <div class="col-md-4">  
+                                                <label for="Celular">Celular:</label>  
+                                            </div>  
+                                            <div class="col-md-6">  
+                                                <input type="text" class="form-control" formControlName="Celular" (keypress)="restrictNumeric($event)">  
+                                                    <!-- <div *ngIf="submitted && formGroup.controls.Celular.errors" class="error">  
+                                                        <div *ngIf="formGroup.controls.Celular.errors.required">celular es requerido</div>  
+                                                    </div>   -->
+
+                                            </div>  
+                                        </div>  
+                                            
+                                                <div class="row">    
+                                                    <div class="col-md-4">  
+                                                        <button type="submit" class="btn btn-primary" (click)="onSubmit(formGroup.value)"  [disabled]="!formGroup.valid">Enviar</button>
+                                                        <input type="button" class="btn btn-warning" (click)="onClose ()" value="Cancel">  
+                                                        </div>  
+                                                    </div>  
+                                                </form>  
+                                            </div>  
+                                        </div>  
+                                    </div>  

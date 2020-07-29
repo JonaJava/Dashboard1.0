@@ -1,0 +1,27 @@
+<mat-nav-list>
+    <div class ="profile-card">
+        <div class="header">
+            <h2>CREW PASS </h2>
+            <h4>example@asd.com</h4>
+        </div>
+        <img src="/assets/Crew.png" >
+    </div>
+    
+        <mat-divider></mat-divider>      
+        <h2 matSubheader>REGISTRO</h2>
+        <a mat-list-item routerLinkActive="list-item-active"  [routerLink]="['/cliente']">
+            <mat-icon>account_circle</mat-icon>Registro Cliente</a>
+     <!--    <a  mat-list-item routerLinkActive="list-item-active"  [routerLink]="['/producto']">
+        <mat-icon>chrome_reader_mode</mat-icon>Registro Producto</a> -->
+          
+        <a  mat-list-item routerLinkActive="list-item-active"  >
+            <mat-icon>chrome_reader_mode</mat-icon>Registro Usuario</a>
+
+ 
+        <mat-divider></mat-divider>
+        <h2 matSubheader>VENTA</h2>
+        <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['/order']">
+        <mat-icon>add_shopping_cart</mat-icon>
+        Venta</a>
+</mat-nav-list>
+

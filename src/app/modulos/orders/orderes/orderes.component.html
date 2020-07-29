@@ -1,0 +1,27 @@
+<table class="table table-hover">
+    <thead>
+        <th>Numero de Pedido</th>
+        <th>Cliente</th>
+        <th>Email</th>
+        <th>Metodo de pago</th>
+        <th>Total Final</th>
+        
+        <th>
+            <a  class="btn btn-outline-success" [routerLink]="['/order']">Crear Nuevo</a>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of orderList">
+            <th  >{{item.OrderNo}}</th>
+            <th >{{item.Cliente}}</th>
+            <th >{{item.Email}}</th>
+            <td >{{item.PMethod}}</td>
+            <td >{{item.GTotal}}</td>
+            <th>
+            <a  class="btn btn-outline-danger" (click)= "OnOrderDelete(item.OrderID)">Eliminar</a>
+            <a  class="btn btn-outline-dark" (click)="openForEdit(item.OrderID)">Editar</a>
+        </th>
+    </tbody>
+</table>
+
+

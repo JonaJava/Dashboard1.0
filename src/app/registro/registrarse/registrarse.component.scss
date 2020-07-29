@@ -1,0 +1,27 @@
+
+
+    .error {  
+      color: red;  
+    }  
+    
+    .error-msg {  
+      display: block;  
+      position: absolute;  
+      font-size: 75%;  
+      bottom: -2em;  
+    }  
+  
+    #header{  
+        width: 100%;  
+    }  
+
+
+    div.form-group.required>label:first-child:after{
+      content:'*';
+      color: #dc3545;
+      padding-left: 5px;
+  }
+
+  .row{  
+    padding: 7px;  
+  }  
